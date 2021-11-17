@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' id='app'  href='app.css' type='text/css' media='all' />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="https://cdn.jsdelivr.net/npm/comfy.js@latest/dist/comfy.min.js"></script>
+    <title>Aleexgod Twitch Overlay</title>
+  </head>
+  <body>
+
+    <script>
+
+      function createHoodoos() {
+        var videlem = document.createElement("video");
+        var sourceMP4 = document.createElement("source"); 
+        videlem.setAttribute("id", "hoodOos");
+        sourceMP4.type = "video/mp4";
+        sourceMP4.src = "hoodoos.mp4";
+        videlem.appendChild(sourceMP4);
+        document.body.appendChild(videlem);
+        videlem.autoplay = true;
+        videlem.muted = false;
+        videlem.load();
+      }
+
+      createHoodoos();
+
+      document.getElementById('hoodOos').addEventListener('ended', disableVideo,false);
+
+      function playVideo() {
+        $('#hoodOos').fadeIn();
+        $('#hoodOos').get(0).play();
+      }
+
+      function disableVideo(e) {
+          $('#hoodOos').fadeOut();
+      }
+
+    </script>
+  
+s
+      <div class="container">
+        <div id="chatbox">
+            <ul>
+            </ul>
+        </div>    
+      </div>
+
+
+	<script>
+
+		const chatbox = document.querySelector('#chatbox ul');
+    var messageArray = [];
+    var chatMin = 0;
+    var chatMax = 5;
+    ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
+        if( flags.broadcaster && command === "video" ) {
+          playVideo();
+        }
+    };
+		ComfyJS.onChat = (user, command, message, flags, extra) => {
+            
+            messageArray.push({
+                username: extra.username,
+                message: command
+            });
+
+    
+            let arrayLength = messageArray.length;
+            console.log(arrayLength);
+
+            // if(arrayLength => chatMax) {
+            //     messageArray.shift();
+            // }
+            
+
+            const newMessage = document.createElement('li');
+            const sender = document.createElement('p');
+            if (message.mod) {
+                sender.classList.add('mod');
+            }
+            if (message.broadcaster) {
+                sender.classList.add('broadcaster');
+            }
+            sender.classList.add('author');
+            sender.style.color = extra.userColor;
+            sender.innerText = user;
+
+            const messageContents = document.createElement('p');
+            messageContents.classList.add('message');
+            messageContents.innerText = command;
+
+            // console.table({user, command, flags});
+            // console.table(message);
+            // console.table(extra);
+
+            newMessage.appendChild(sender);
+            newMessage.appendChild(messageContents);
+
+            chatbox.appendChild(newMessage);
+            setInterval(function(){ chatbox.lastChild.classList.add('last'); }, 200);
+
+            console.log(messageArray);            
+            
+		}
+		ComfyJS.Init('wintrfox');
+	</script>
+  </body>
+</html>
