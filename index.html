@@ -23,7 +23,7 @@
         sourceMP4.src = "hoodoos.mp4";
         videlem.appendChild(sourceMP4);
         document.body.appendChild(videlem);
-        videlem.autoplay = true;
+        videlem.autoplay = false;
         videlem.muted = false;
         videlem.load();
       }
@@ -43,7 +43,7 @@
 
     </script>
   
-s
+
       <div class="container">
         <div id="chatbox">
             <ul>
@@ -65,47 +65,47 @@ s
     };
 		ComfyJS.onChat = (user, command, message, flags, extra) => {
             
-            messageArray.push({
-                username: extra.username,
-                message: command
-            });
+            // messageArray.push({
+            //     username: extra.username,
+            //     message: command
+            // });
 
     
-            let arrayLength = messageArray.length;
-            console.log(arrayLength);
+            // let arrayLength = messageArray.length;
+            // console.log(arrayLength);
 
-            // if(arrayLength => chatMax) {
-            //     messageArray.shift();
-            // }
+            // // if(arrayLength => chatMax) {
+            // //     messageArray.shift();
+            // // }
             
 
-            const newMessage = document.createElement('li');
-            const sender = document.createElement('p');
-            if (message.mod) {
-                sender.classList.add('mod');
-            }
-            if (message.broadcaster) {
-                sender.classList.add('broadcaster');
-            }
-            sender.classList.add('author');
-            sender.style.color = extra.userColor;
-            sender.innerText = user;
+            // const newMessage = document.createElement('li');
+            // const sender = document.createElement('p');
+            // if (message.mod) {
+            //     sender.classList.add('mod');
+            // }
+            // if (message.broadcaster) {
+            //     sender.classList.add('broadcaster');
+            // }
+            // sender.classList.add('author');
+            // sender.style.color = extra.userColor;
+            // sender.innerText = user;
 
-            const messageContents = document.createElement('p');
-            messageContents.classList.add('message');
-            messageContents.innerText = command;
+            // const messageContents = document.createElement('p');
+            // messageContents.classList.add('message');
+            // messageContents.innerText = command;
 
-            // console.table({user, command, flags});
-            // console.table(message);
-            // console.table(extra);
+            // // console.table({user, command, flags});
+            // // console.table(message);
+            // // console.table(extra);
 
-            newMessage.appendChild(sender);
-            newMessage.appendChild(messageContents);
+            // newMessage.appendChild(sender);
+            // newMessage.appendChild(messageContents);
 
-            chatbox.appendChild(newMessage);
-            setInterval(function(){ chatbox.lastChild.classList.add('last'); }, 200);
+            // chatbox.appendChild(newMessage);
+            // setInterval(function(){ chatbox.lastChild.classList.add('last'); }, 200);
 
-            console.log(messageArray);            
+            // console.log(messageArray);            
             
 		}
 		ComfyJS.Init('wintrfox');
