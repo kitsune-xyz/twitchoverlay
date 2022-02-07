@@ -69,9 +69,13 @@ body, button, input, select, textarea {
 
 
 body {
-    width:100%;
-    height:auto;
+    width:100vw;
+    height:100vh;
     background-color:#FFF;
+}
+
+strong {
+  font-weight:bold;
 }
 
 .container {
@@ -116,7 +120,7 @@ video {
         transition:700ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
         // opacity:0;
         // transform:translateY(30px);
-        pointer-events: none;
+        // pointer-events: none;
         overflow:hidden;
         word-wrap:break-word;
         height:50px;
