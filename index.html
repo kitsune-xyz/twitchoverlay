@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' id='app'  href='app.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='app'  href='app.css?version=1' type='text/css' media='all' />
     <link rel='stylesheet' id='toastr'  href='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css' type='text/css' media='all' />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -15,13 +15,7 @@
   </head>
   <body>
   
-
-      <div class="container">
-        <div id="chatbox">
-            <ul>
-            </ul>
-        </div>    
-      </div>
+    <div id="peeporun"></div>
 
 
 	<script>
@@ -30,29 +24,29 @@
 
     ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
         if( flags.broadcaster && command === "green" ) {
-          fetch('https://gentle-eyrie-49527.herokuapp.com/https://maker.ifttt.com/trigger/change_green/with/key/J1Tjxz6uQolHn5yQZUOI2')
+          fetch('https://gentle-eyrie-49527.herokuapp.com/maker.ifttt.com/trigger/change_green/with/key/cvKnW3w0ovrX3aQLGqCmqr')
             .then((response) => {
               toastr.success('light changed green');
             });
-        } else if( flags.broadcaster && command === "blue" ) {
-          fetch('https://gentle-eyrie-49527.herokuapp.com/https://maker.ifttt.com/trigger/change_blue/with/key/J1Tjxz6uQolHn5yQZUOI2')
+        } else if( flags.broadcaster && command === "purple" ) {
+          fetch('https://gentle-eyrie-49527.herokuapp.com/maker.ifttt.com/trigger/change_purple/with/key/cvKnW3w0ovrX3aQLGqCmqr')
             .then((response) => {
-              toastr.success('light changed to blue');
+              toastr.success('light changed to purple');
             });
+        }
+        else if(command === "run") {
+          $('#peeporun').addClass('running');
+          setTimeout(function() {
+            $('#peeporun').removeClass('running')
+          }, 5000);
         }
 
     }
-
-    // ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
-    //     if( flags.broadcaster && command === "test" ) {
-    //       toastr.success(user + ' changed lights to blue');
-    //       console.log( user, message );
-    //     }
+      
+    
+    // ComfyJS.onChat = ( user, message, flags, self, extra ) => {
+    //     toastr.info("<strong>" + user + "</strong>" + " " + message);
     //   }
-
-      ComfyJS.onChat = ( user, message, flags, self, extra ) => {
-        toastr.info("<strong>" + user + "</strong>" + " " + message);
-      }
 
     
 
@@ -64,7 +58,7 @@
     // }
     // ComfyJS.Init( 'aleexgigachad', 'oauth:et50pakjciffdxh4wdd5s7s2fakw01' );
     
-		ComfyJS.Init('wintrfox');
+		ComfyJS.Init('aleexgod');
 	</script>
   </body>
 </html>
