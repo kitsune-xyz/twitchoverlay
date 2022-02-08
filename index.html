@@ -17,6 +17,7 @@
   
     <div id="peeporun"></div>
     <div id="banned"><div class="text"></div></div>
+    <div id="controller"><div class="text">Skilled BTW</div> </div>
 
 	<script>
 
@@ -40,6 +41,9 @@
             $('#peeporun').removeClass('running')
           }, 5000);
         }
+        else if(command === "controller") {
+          controller();
+        }
     }
 
     function bannedUserAnim(bannedUsername) {
@@ -53,8 +57,17 @@
       }, 4080);
     };
 
-    ComfyJS.onBan = ( bannedUsername, extra ) => {
 
+    function controller() {
+      $('#controller').fadein(300);
+      setTimeout(function() {
+        $('#controller').fadeout();
+      }, 4070);
+    }
+
+
+
+    ComfyJS.onBan = ( bannedUsername, extra ) => {
         bannedUserAnim(bannedUsername);
     }
 
