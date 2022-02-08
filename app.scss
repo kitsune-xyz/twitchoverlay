@@ -101,7 +101,7 @@ strong {
   height:76px;
   background-image:url(img/peeporun.gif);
   position:absolute;
-  bottom:76px;
+  bottom:0px;
   left:-76px;
   &.running {
     -webkit-animation: run 5s linear forwards; 
