@@ -352,6 +352,11 @@
             .then((response) => {
               toastr.success('light changed to blue');
             });
+        } else if ( message.toLowerCase() === "red" ) {
+          fetch('https://gentle-eyrie-49527.herokuapp.com/maker.ifttt.com/trigger/change_red/with/key/cvKnW3w0ovrX3aQLGqCmqr')
+            .then((response) => {
+              toastr.success('light changed to red');
+            });
         } else {
           fetch('https://gentle-eyrie-49527.herokuapp.com/maker.ifttt.com/trigger/change_blue/with/key/cvKnW3w0ovrX3aQLGqCmqr')
             .then((response) => {
