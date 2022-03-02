@@ -96,6 +96,15 @@ strong {
   }
 }
 
+@keyframes run {
+  0% {
+    left: -5%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
 #peeporun {
   width:76px;
   height:76px;
@@ -107,12 +116,7 @@ strong {
     -webkit-animation: run 5s linear forwards; 
     -moz-animation:    run 5s linear forwards;
     -o-animation:      run 5s linear forwards;
-  }
-  &:nth-of-type(2) {
-    bottom:40px;
-    left:-100px;
-    width:56px;
-    height:56px;
+    animation:         run 5s linear forwards;
   }
 }
 
@@ -144,6 +148,58 @@ video {
     text-align:center;
     font-size:40px;
     text-shadow: 0 1px 0 #333, 0 2px 0 #444, 0 3px 0 #444, 0 4px 0 #333, 0 5px 0 #222, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+  }
+}
+
+.wrapper {
+  position: relative;
+  min-height: 100vh;
+  width:100%;
+  display:none;
+}
+
+
+[class|="confetti"] {
+  position: absolute;
+}
+
+$colors: (#d13447, #ffbf00, #263672);
+
+@for $i from 0 through 150 {
+  $w: random(8);
+  $l: random(100);
+  .confetti-#{$i} {
+    width: #{$w}px;
+    height: #{$w*0.4}px;
+    background-color: nth($colors, random(3));
+    top: -10%;
+    left: unquote($l+"%");
+    opacity: random() + 0.5;
+    transform: rotate(#{random()*360}deg);
+    animation: drop-#{$i} unquote(4+random()+"s") unquote(random()+"s") infinite;
+  }
+
+  @keyframes drop-#{$i} {
+    100% {
+      top: 110%;
+      left: unquote($l+random(15)+"%");
+    }
+  }
+}
+
+#salami {
+  position:absolute;
+  bottom:-128px;
+  left:0;
+  transition:500ms all ease-in-out;
+  opacity:0;
+  display:none;
+  width:128px;
+  height:128px;
+  background-image:url(img/salami.gif);
+  &.up {
+    bottom:0px;
+    display:block;
   }
 }
 
