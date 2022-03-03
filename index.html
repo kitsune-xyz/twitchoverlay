@@ -278,7 +278,11 @@
         bannedUserAnim(bannedUsername);
     }
 
-    ComfyJS.onSub = ( ) => {
+    ComfyJS.onSub = ( user, message, subTierInfo ) => {
+        confetti();
+    }
+
+    ComfyJS.onResub = ( user, message, streamMonths, cumulativeMonths, subTierInfo ) => {
         confetti();
     }
 
