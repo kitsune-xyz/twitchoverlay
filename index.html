@@ -206,6 +206,7 @@
           $('#memevids').fadeIn(300);
           video.src = "./video/snoopstfubitch.mp4";
           video.play();
+          video.volume = 0.6;
           setTimeout(function() {
             video.removeAttribute('src');
             $('#memevids').fadeOut();
@@ -213,6 +214,7 @@
         } else if(command === "dontcare") {
           $('#memevids').fadeIn(300);
           video.src = "./video/wedonotcare.mp4";
+          video.volume = 0.8;
           video.play();
           setTimeout(function() {
             video.removeAttribute('src');
