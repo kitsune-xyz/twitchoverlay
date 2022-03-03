@@ -220,6 +220,15 @@
             video.removeAttribute('src');
             $('#memevids').fadeOut();
           }, 4500);
+        } else if(command === "true") {
+          $('#memevids').fadeIn(300);
+          video.src = "./video/true.mp4";
+          video.volume = 0.6;
+          video.play();
+          setTimeout(function() {
+            video.removeAttribute('src');
+            $('#memevids').fadeOut();
+          }, 5500);
         }
 
     }
