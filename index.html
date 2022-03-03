@@ -191,8 +191,9 @@
             .then((response) => {
               toastr.success('light changed to purple');
             });
-        }
-        else if(command === "run") {
+        } else if( flags.broadcaster && command === "confetti" ) {
+          confetti();
+        } else if(command === "run") {
           $('#peeporun').addClass('running');
           setTimeout(function() {
             $('#peeporun').removeClass('running')
