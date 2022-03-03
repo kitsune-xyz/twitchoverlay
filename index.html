@@ -15,7 +15,6 @@
   </head>
   <body>
   
-    <canvas id="fireworks"></canvas>
     <div id="salami"></div>
     <div id="peeporun"></div>
     <div id="banned"><div class="text"></div></div>
@@ -173,10 +172,12 @@
       <div class="confetti-0"></div>
     </div>
 
-	<script>
+    <video id="memevids" src=""></video>
+
+  	<script>
  
 		const chatbox = document.querySelector('#chatbox');
-
+    var video = document.getElementById('memevids');
 // 93cd8382-21a1-4cbd-a3bf-8dee10475431 <-- rewardid
 
     ComfyJS.onCommand = ( user, command, message, flags, extra ) => {
@@ -199,10 +200,26 @@
         }
         else if(command === "controller") {
           controller();
-        } 
-        // else if(command === "salami") {
-        //   salami();
-        // }
+        };
+
+        if(command === "stfu") {
+          $('#memevids').fadeIn(300);
+          video.src = "./video/snoopstfubitch.mp4";
+          video.play();
+          setTimeout(function() {
+            video.removeAttribute('src');
+            $('#memevids').fadeOut();
+          }, 2800);
+        } else if(command === "dontcare") {
+          $('#memevids').fadeIn(300);
+          video.src = "./video/wedonotcare.mp4";
+          video.play();
+          setTimeout(function() {
+            video.removeAttribute('src');
+            $('#memevids').fadeOut();
+          }, 4500);
+        }
+
     }
 
     ComfyJS.onChat = ( user, message, flags, self, extra ) => {
@@ -290,7 +307,7 @@
       console.log( user + " redeemed " + reward + " for " + cost );
     }    
 
-
+    
     ComfyJS.Init( 'aleexgod', 'oauth:xlmpdwgcbdbiciupv0l721yo2z0747' );
 		// ComfyJS.Init('wintrfox');
 	</script>
