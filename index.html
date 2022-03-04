@@ -230,6 +230,15 @@
             video.removeAttribute('src');
             $('#memevids').fadeOut();
           }, 7500);
+        } else if(command === "sheesh") {
+          $('#memevids').fadeIn(300);
+          video.src = "./video/sheesh.mp4";
+          video.volume = 0.6;
+          video.play();
+          setTimeout(function() {
+            video.removeAttribute('src');
+            $('#memevids').fadeOut();
+          }, 4500);
         }
 
     }
