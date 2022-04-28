@@ -312,6 +312,13 @@
       }, 3870);
     }
 
+    function gifFade(id, timeout) {
+      $('#' + id).fadeIn(300);
+      setTimeout(function() {
+        $('#' + id).fadeOut(200);
+      }, timeout);
+    }
+
     ComfyJS.onBan = ( bannedUsername, extra ) => {
         bannedUserAnim(bannedUsername);
     }
@@ -329,7 +336,8 @@
     }    
 
     
-    ComfyJS.Init( 'animoaleex', 'oauth:xlmpdwgcbdbiciupv0l721yo2z0747' );
+    // ComfyJS.Init( 'animoaleex', 'oauth:xlmpdwgcbdbiciupv0l721yo2z0747' );
+    ComfyJS.Init( 'animoaleex' );
 		// ComfyJS.Init('wintrfox');
 	</script>
   </body>
