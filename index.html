@@ -198,10 +198,10 @@
           setTimeout(function() {
             $('#peeporun').removeClass('running')
           }, 5000);
-        }
-        else if(command === "controller") {
-          controller();
         };
+        // else if(command === "controller") {
+        //   controller();
+        // };
 
         if(command === "stfu") {
           $('#memevids').fadeIn(300);
@@ -215,6 +215,15 @@
         } else if(command === "dontcare") {
           $('#memevids').fadeIn(300);
           video.src = "./video/wedonotcare.mp4";
+          video.volume = 0.8;
+          video.play();
+          setTimeout(function() {
+            video.removeAttribute('src');
+            $('#memevids').fadeOut();
+          }, 4500);
+        }  else if(command === "controller") {
+          $('#memevids').fadeIn(300);
+          video.src = "./video/controller.mp4";
           video.volume = 0.8;
           video.play();
           setTimeout(function() {
